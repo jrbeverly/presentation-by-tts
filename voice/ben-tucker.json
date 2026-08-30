@@ -1,0 +1,40 @@
+{
+  "name": "Technical SME Male 01",
+  "status": "candidate",
+  "reference_audio": "ben-tucker.wav",
+  "clip": {
+    "source": "333_00_crawford_64kb.mp3",
+    "start": 313.3,
+    "duration": 10
+  },
+  "source": {
+    "reader": "Ben Tucker",
+    "recording": "333: A Bibliography of the Science-Fantasy Novel by Joseph H. Crawford, Jr., Donald M. Grant, and James J. Donahue, section 00: Introduction",
+    "catalog_url": "https://librivox.org/333-a-bibliography-of-the-science-fantasy-novel-by-joseph-h-crawford-jr/",
+    "catalog_identifier": "333abibliographyscience-fantasy_2409_librivox",
+    "audio_url": "https://archive.org/download/333abibliographyscience-fantasy_2409_librivox/333_00_crawford_64kb.mp3",
+    "date_retrieved": "2026-09-13",
+    "source_checked": "2026-09-13",
+    "rights": "LibriVox states that its recordings are public domain in the United States. Corporate synthetic-voice use, voice-rights implications, and copyright/public-domain status outside the United States still require review.",
+    "processing": "The clip window is converted to mono 24 kHz PCM, high-passed at 80 Hz, and normalized to -27 LUFS."
+  },
+  "tts": {
+    "temperature": 0.75,
+    "top_p": 0.92,
+    "top_k": 900,
+    "repetition_penalty": 1.15,
+    "min_p": 0.05,
+    "exaggeration": 0.22,
+    "cfg_weight": 0.5
+  },
+  "post": {
+    "tempo": 1.04,
+    "highpass_hz": 80,
+    "warmth_hz": 200,
+    "warmth_db": 0.4,
+    "clarity_hz": 3500,
+    "clarity_db": 1.5,
+    "compressor_threshold_db": -22,
+    "target_lufs": -16
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "sprint": {
+    "id": "2026.05.04",
+    "product": "Acme platform",
+    "title": "Acme Sprint Report",
+    "report_date": "2026-05-04",
+    "summary": "The team completed all planned work, released the unified notification service, improved mobile ordering performance, and finished the sprint without a critical production defect."
+  },
+  "delivery": {
+    "completed_points": 38,
+    "planned_completion_percent": 100,
+    "closed_tickets": 22,
+    "carryover_tickets": 4,
+    "average_cycle_days": 2.1,
+    "previous_average_cycle_days": 3.4,
+    "critical_production_bugs": 0,
+    "build_success_percent": 97
+  },
+  "releases": [
+    {
+      "name": "Unified customer notification service",
+      "outcome": "Consolidated three email and push handlers into one event-driven pipeline."
+    },
+    {
+      "name": "Mobile order summary",
+      "outcome": "Reduced mobile load time by roughly 40 percent."
+    },
+    {
+      "name": "Reporting read replica",
+      "outcome": "Improved dashboard query performance by six times."
+    },
+    {
+      "name": "Multi-device authentication fix",
+      "outcome": "Removed intermittent session drops for users with multiple active devices."
+    }
+  ],
+  "demo": {
+    "scenario": "Follow a simulated order event through email and mobile push delivery, then inspect the redesigned order summary on mobile.",
+    "observations": [
+      "The notification pipeline fanned out to both channels and completed in under two seconds.",
+      "The mobile order summary remained responsive across the tested device sizes.",
+      "Events arriving within 50 milliseconds were initially deduplicated too aggressively.",
+      "A correlation identifier now distinguishes duplicates from legitimate concurrent notifications.",
+      "A stale push token is logged and the email channel is re-queued so the customer still receives a notification."
+    ]
+  },
+  "quality": {
+    "velocity_points": 38,
+    "rolling_four_sprint_average": 30,
+    "customer_facing_defect_escapes": 0,
+    "internal_tooling_defects_before_merge": 1,
+    "test_coverage_percent": 83,
+    "previous_test_coverage_percent": 76
+  },
+  "next_sprint": {
+    "capacity_points": 28,
+    "capacity_note": "Capacity is reduced by planned time off.",
+    "goals": [
+      "Ship the self-service account settings redesign.",
+      "Begin phase one of the analytics data-model refactor.",
+      "Close the remaining payments-service technical-debt tickets."
+    ]
+  }
+}
+

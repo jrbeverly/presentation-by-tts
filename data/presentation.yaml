@@ -1,0 +1,274 @@
+presentation:
+  title: Acme Sprint Report
+  subtitle: Sprint 2026.05.04
+  theme: acme-dark
+  voice:
+    model: full
+    device: cpu
+    profile: voice/karen-savage.json
+    seed: 2026
+  slides:
+    - id: agenda
+      layout: title
+      eyebrow: Sprint 2026.05.04
+      title: Delivery, evidence, and what comes next
+      content:
+        lede: The Acme platform team completed every planned item and shipped the unified notification service.
+        sections:
+          - id: metrics
+            number: "01"
+            label: Sprint metrics
+          - id: releases
+            number: "02"
+            label: Release highlights
+          - id: demo
+            number: "03"
+            label: Demo findings
+          - id: next
+            number: "04"
+            label: Next sprint
+        footer: Acme Platform · Sprint Review
+      narration:
+        - id: agenda
+          target: agenda
+          text: >-
+            Welcome, everyone. Today we are reviewing sprint 2026.05.04 for the Acme platform. Here is what we will cover. First, a high-level look at our sprint metrics. Then a walkthrough of the key release highlights. After that, we will move into our demo section, where I will introduce the work we completed in the environment. We will close with a deeper discussion of our metrics and a brief look at what comes next.
+          pause_after_ms: 600
+          audio: build/narration/01-agenda.wav
+
+    - id: sprint-metrics-overview
+      layout: metrics
+      eyebrow: Delivery
+      title: Every planned item crossed the line
+      content:
+        lede: Faster flow and stable delivery quality defined the sprint.
+        metrics:
+          - id: story-points
+            value: "38"
+            label: story points completed
+            accent: coral
+          - id: plan
+            value: "100%"
+            label: planned work finished
+            accent: mint
+          - id: tickets
+            value: "22"
+            label: tickets closed
+            note: 4 carried over
+            accent: blue
+          - id: cycle-time
+            value: "2.1 days"
+            label: average cycle time
+            note: down from 3.4
+            accent: violet
+        footer: 0 critical production bugs · 97% build success
+      narration:
+        - id: sprint-metrics-overview
+          target: sprint-metrics-overview
+          text: >-
+            Starting with metrics. The team completed thirty-eight story points this sprint, finishing one hundred percent of the planned work. We closed twenty-two tickets in total, including four that carried over from last sprint. Our cycle time averaged two point one days per ticket, which is down from three point four in the previous sprint. We had no critical bugs raised in production this cycle, and our build success rate held at ninety-seven percent across all pipelines.
+          pause_after_ms: 500
+          audio: build/narration/02-sprint-metrics-overview.wav
+
+    - id: release-highlights
+      layout: cards
+      eyebrow: Release highlights
+      title: Four outcomes changed the platform
+      content:
+        cards:
+          - id: notifications
+            index: "01"
+            title: One notification pipeline
+            body: Three handlers consolidated into an event-driven service.
+          - id: mobile-summary
+            index: "02"
+            title: 40% faster on mobile
+            body: A redesigned order summary reduced load time.
+          - id: read-replica
+            index: "03"
+            title: 6× faster queries
+            body: Reporting moved to the read-replica configuration.
+          - id: authentication
+            index: "04"
+            title: Stable multi-device sessions
+            body: An intermittent authentication edge case was resolved.
+        footer: Product, performance, infrastructure, and reliability
+      narration:
+        - id: release-highlights
+          target: release-highlights
+          text: >-
+            Moving on to release highlights. The headline deliverable this sprint was the completion of the unified customer notification service. This service consolidates three separate email and push handlers into a single, event-driven pipeline. We also shipped a redesigned order summary page, which reduces load time by roughly forty percent on mobile. On the infrastructure side, we migrated the reporting database to the new read-replica configuration, improving dashboard query performance by six times. Finally, we resolved a long-standing authentication edge case that was causing intermittent session drops for users with multiple active devices.
+          pause_after_ms: 500
+          audio: build/narration/03-release-highlights.wav
+
+    - id: demo-intro
+      layout: flow
+      eyebrow: Demo
+      title: Follow one order event to the customer
+      content:
+        lede: The demo traces delivery across both channels, then checks the mobile experience.
+        steps:
+          - id: order-event
+            index: "01"
+            title: Order event
+            body: A simulated order enters the service.
+          - id: notification-service
+            index: "02"
+            title: Notification service
+            body: One event-driven pipeline coordinates delivery.
+          - id: fanout
+            index: "03"
+            title: Email + push
+            body: The event fans out across both customer channels.
+          - id: order-summary
+            index: "04"
+            title: Mobile summary
+            body: The redesigned page is tested across device sizes.
+        footer: End-to-end service walkthrough
+      narration:
+        - id: demo-intro
+          target: demo-intro
+          text: >-
+            Let us now walk through the demo. We will show the notification service in action, starting from an order event and following it through to delivery on both email and mobile push. We will also step through the updated order summary on a mobile device so you can see the performance improvement firsthand. Here is that demo now.
+          pause_after_ms: 800
+          audio: build/narration/04-demo-intro.wav
+
+    - id: demo-bridge
+      layout: video
+      eyebrow: Live walkthrough
+      title: Notification delivery in motion
+      content:
+        video:
+          id: demo-playback
+          source: build/demo-placeholder.mp4
+          duration_seconds: 10
+          label: Synthetic environment capture
+          caption: A generated MP4 stands in for the product walkthrough.
+          callouts:
+            - Order event received
+            - Email and push dispatched
+            - Delivery completed
+        footer: Demo placeholder · generated during the build
+      narration:
+        - id: demo-placeholder
+          target: demo-bridge.demo-playback
+          kind: silence
+          duration_seconds: 10
+          pause_after_ms: 0
+          audio: build/narration/05-demo-placeholder.wav
+
+    - id: demo-recap
+      layout: metrics
+      eyebrow: Demo results
+      title: The happy path held end to end
+      content:
+        lede: The live workflow behaved as designed across service and screen.
+        metrics:
+          - id: delivery-time
+            value: "< 2 sec"
+            label: end-to-end delivery
+            accent: mint
+          - id: channel-fanout
+            value: "2 / 2"
+            label: channels reached
+            note: email + mobile push
+            accent: coral
+          - id: responsive-layout
+            value: "Held"
+            label: responsive layout
+            note: across tested sizes
+            accent: blue
+        footer: Simulated order event · production-like environment
+      narration:
+        - id: demo-bridge
+          target: demo-recap
+          text: >-
+            All right, so that was the demo showing our work in the environment. You saw the notification pipeline trigger correctly on a simulated order event, fan out to both channels, and complete end to end in under two seconds. The mobile order summary page loaded smoothly, and the layout held across the tested device sizes. Now let us move to the next section.
+          pause_after_ms: 600
+          audio: build/narration/06-demo-bridge.wav
+
+    - id: demo-deep-dive
+      layout: findings
+      eyebrow: What we learned
+      title: Edge cases strengthened the delivery design
+      content:
+        findings:
+          - id: concurrency
+            signal: 50 ms
+            title: Concurrent events looked duplicated
+            before: Legitimate notifications could be deduplicated too aggressively.
+            after: Correlation IDs now separate real duplicates from concurrent events.
+          - id: stale-token
+            signal: Fallback
+            title: One push token was stale
+            before: Mobile push could not reach that device.
+            after: The failure is logged and email is re-queued for delivery.
+        footer: Both safeguards are included in the demonstrated build
+      narration:
+        - id: demo-deep-dive
+          target: demo-deep-dive
+          text: >-
+            I want to spend a moment on what the notification service demo revealed beyond the happy path. During integration testing we discovered that concurrent events arriving within a fifty-millisecond window were being deduplicated too aggressively. We added a correlation identifier to the event envelope, which allows the service to distinguish between genuinely duplicate events and two legitimate notifications that happen to arrive close together. That fix is included in the build you just saw. We also observed one instance of a push token being stale during the demo run. The service handles that gracefully now, logging the failure and re-queuing the email channel so the customer still receives the notification.
+          pause_after_ms: 500
+          audio: build/narration/07-demo-deep-dive.wav
+
+    - id: post-demo-metrics
+      layout: comparison
+      eyebrow: Quality and flow
+      title: Resolved architecture unlocked velocity
+      content:
+        comparison:
+          id: velocity
+          label: Story points
+          current: 38
+          baseline: 30
+          current_label: This sprint
+          baseline_label: Four-sprint average
+        metrics:
+          - id: defect-escape
+            value: "0"
+            label: customer-facing escapes
+          - id: test-coverage
+            value: "83%"
+            label: changed-module coverage
+            note: up from 76%
+        footer: Notification architecture was unblocked after two sprints
+      narration:
+        - id: post-demo-metrics
+          target: post-demo-metrics
+          text: >-
+            Now for a closer look at the numbers behind this sprint. Our team velocity of thirty-eight points puts us eight points above the rolling four-sprint average of thirty. The improvement is largely attributable to the notification service, which had been blocked on an architecture decision for two sprints. Once that was resolved the work flowed quickly. Defect escape rate was zero for customer-facing features and one for internal tooling, which was caught during code review before merging. Test coverage across the changed modules sits at eighty-three percent, up from seventy-six percent last sprint, driven by the new end-to-end test suite for the notification pipeline.
+          pause_after_ms: 500
+          audio: build/narration/08-post-demo-metrics.wav
+
+    - id: whats-next
+      layout: next
+      eyebrow: Next sprint
+      title: Focus the reduced capacity on three outcomes
+      content:
+        capacity:
+          id: capacity
+          value: "28"
+          label: planned story points
+          note: Adjusted for planned time off
+        goals:
+          - id: account-settings
+            index: "01"
+            title: Account settings
+            body: Ship the self-service redesign.
+          - id: analytics-model
+            index: "02"
+            title: Analytics model
+            body: Begin phase one of the data-model refactor.
+          - id: payments-debt
+            index: "03"
+            title: Payments debt
+            body: Close the remaining technical-debt tickets.
+        footer: Full ticket and pull-request detail remains in project documentation
+      narration:
+        - id: whats-next
+          target: whats-next
+          text: >-
+            Looking ahead to the next sprint. Our primary goal is shipping the self-service account settings redesign, which stakeholders have been waiting on since Q one. We will also begin the first phase of the analytics data model refactor, and the team has committed to closing out the remaining technical debt tickets on the payments service. Capacity is slightly reduced due to planned time off, so we have sized the sprint accordingly at twenty-eight points. Thank you all for your time today. The full sprint report, including ticket details and pull request links, is available in the project documentation.
+          pause_after_ms: 700
+          audio: build/narration/09-whats-next.wav
